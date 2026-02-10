@@ -2,7 +2,7 @@
 #include "raylib.h"
 #include "screens.h"
 
-static const int target_size = 25;
+static const int target_size = 50;
 
 static int score = 0;
 
@@ -13,7 +13,7 @@ static bool gameover = 0;
 static Vector2 target_pos;
 
 static void DrawTarget(){
-	DrawCircle(target_pos.x, target_pos.y, 25, RED);
+	DrawCircle(target_pos.x, target_pos.y, target_size, RED);
 };
 
 void AimEnterScreen() {
@@ -36,20 +36,20 @@ void AimUpdate(){
 };
 
 void AimDraw(){
-	ClearBackground(WHITE);
+	ClearBackground(RAYWHITE);
 	if (!gameover){
 		DrawTarget();
 		if (gametime == -1.0f){
-			DrawCenText("Apasa pe tinte in cel mai scult timp", 400, 20);
-			DrawText(TextFormat("Timp ramas: 0.00"), 20, 20, 20, BLACK);
+			DrawCenText("Apasa pe tinte in cel mai scult timp", 400, 50);
+			DrawTextEx(font, "Timp ramas: 0.00", (Vector2){20, 20}, 40, 2, BLACK);
 		}
 		else {
-			DrawText(TextFormat("Timp ramas: %02.02f",gametime), 20, 20, 20, BLACK);
+			DrawTextEx(font, TextFormat("Timp ramas: %02.02f",gametime), (Vector2){20, 20}, 40, 2, BLACK);
 			gametime -= GetFrameTime();
 			if (gametime <= 0.0f) {gameover = 1; gametime = 0.0f;}
 		}
 	}else{
-		DrawCenText("Felicitari!", GetScreenHeight()/2-20, 30);
-		DrawCenText(TextFormat("Ai obtinut %i puncte", score), GetScreenHeight()/2+12, 20);
+		DrawCenText("Felicitari!", GetScreenHeight()/2-40, 50);
+		DrawCenText(TextFormat("Ai obtinut %i puncte", score), GetScreenHeight()/2+12, 50);
 	}
 };

@@ -48,7 +48,7 @@ int GetCorrect() {
 	return c;
 }
 
-void ColorEnterScreen() {
+void ReflexEnterScreen() {
 	previewing = false;
 	gamestarted = false;
 	gameover = false;
@@ -60,7 +60,7 @@ void ColorEnterScreen() {
 
 #include <stdio.h>
 
-void ColorUpdate(){
+void ReflexUpdate(){
 	if (previewing){
 		previewtime -= GetFrameTime();
 		if (previewtime <= 0) {
@@ -98,7 +98,7 @@ void ColorUpdate(){
 	}
 };
 
-void ColorDraw(){
+void ReflexDraw(){
 	ClearBackground(RAYWHITE);
 	if (!previewing && !gamestarted && !gameover) 
 	{

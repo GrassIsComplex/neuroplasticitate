@@ -7,8 +7,10 @@
     #include <emscripten/emscripten.h>
 #endif
 
-const int screenWidth = 800;
-const int screenHeight = 450;
+const int screenWidth = 1200;
+const int screenHeight = 650;
+
+Font font;
 
 enum Screens current_screen;
 
@@ -22,6 +24,8 @@ int main(void)
     InitWindow(screenWidth, screenHeight, "Neuroplasticitate");
 
 	srand(time(NULL));
+
+	font = LoadFontEx("resources/Roboto-Regular.ttf", 120, NULL, 0);
 
 	SetScreen(MAIN);
 
@@ -38,7 +42,7 @@ int main(void)
 }
 
 void DrawCenText(const char *t, int y, int s){
-	DrawText(t, GetScreenWidth()/2 - MeasureText(t, s)/2, y, s, BLACK);
+	DrawTextEx(font, t, (Vector2){GetScreenWidth()/2 - MeasureTextEx(font, t, s, 2).x/2, y}, s, 2, BLACK);
 };
 
 void SetScreen(enum Screens new_screen){
@@ -49,6 +53,8 @@ void SetScreen(enum Screens new_screen){
 			ColorEnterScreen();
 		case AIM:
 			AimEnterScreen();
+		case REFLEX:
+			ReflexEnterScreen();
 	};
 	current_screen = new_screen;
 }
@@ -76,6 +82,12 @@ void UpdateDrawFrame(void)
 			ColorDraw();
 			EndDrawing();
 			break;
+		}
+		case REFLEX:{
+			ReflexUpdate();
+			BeginDrawing();
+			ReflexDraw();
+			EndDrawing();
 		}
 		default:
 			break;
