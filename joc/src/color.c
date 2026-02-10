@@ -17,7 +17,7 @@ static bool gamestarted = false, previewing = false, gameover = false;
 
 static int finalscore = 0;
 
-void SetupRects(void) {
+static void SetupRects(void) {
 	const int rect_l = 70;
 	const int gap = 8;
 
@@ -34,13 +34,13 @@ void SetupRects(void) {
 	}
 }
 
-void RandomizeArray() {
+static void RandomizeArray() {
 	for (int i=0; i < 9; i++){
 		col[i] = rand()%ncolor;
 	}
 };
 
-int GetCorrect() {
+static int GetCorrect() {
 	int c = 0;
 	for (int i = 0; i < 9; i++){
 		if (col[i] == buttons[i].col) c++;
