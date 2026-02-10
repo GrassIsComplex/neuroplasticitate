@@ -12,8 +12,10 @@ static bool gameover = 0;
 
 static Vector2 target_pos;
 
+static Texture target_tex;
+
 static void DrawTarget(){
-	DrawCircle(target_pos.x, target_pos.y, target_size, RED);
+	DrawTextureEx(target_tex, (Vector2){target_pos.x-target_tex.width*0.7f, target_pos.y-target_tex.height*0.7f}, 0.0f, 1.4f, RED);
 };
 
 void AimEnterScreen() {
@@ -22,6 +24,7 @@ void AimEnterScreen() {
 	gametime = -1.0f;
 	gameover = 0;
 	score = 0;
+	target_tex = LoadTexture("resources/aacircle.png");
 };
 
 void AimUpdate(){
@@ -40,7 +43,7 @@ void AimDraw(){
 	if (!gameover){
 		DrawTarget();
 		if (gametime == -1.0f){
-			DrawCenText("Apasa pe tinte in cel mai scult timp", 400, 50);
+			DrawCenText("Apasa pe tinte in cel mai scurt timp", 400, 50);
 			DrawTextEx(font, "Timp ramas: 0.00", (Vector2){20, 20}, 40, 2, BLACK);
 		}
 		else {
