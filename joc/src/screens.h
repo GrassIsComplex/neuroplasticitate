@@ -6,6 +6,7 @@ enum Screens {
 	COLOR,
 	REFLEX
 };
+void SetScreen(enum Screens);
 
 extern Font font;
 

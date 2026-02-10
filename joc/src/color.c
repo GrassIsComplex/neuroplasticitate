@@ -96,6 +96,8 @@ void ColorUpdate(){
 			}
 		}
 	}
+	if (gameover && IsKeyPressed(KEY_SPACE))
+		SetScreen(MAIN);
 };
 
 void ColorDraw(){
@@ -115,5 +117,6 @@ void ColorDraw(){
 			if (gamestarted) DrawTextEx(font, TextFormat("Timp ramas: %01.02f",solvetime), (Vector2){20, 20}, 40, 2, BLACK);
 		}else{
 			DrawCenText(TextFormat("Scor: %d/9 in %2.02f secunde",finalscore, maxtime - solvetime),GetScreenHeight()/2 - 15, 30);
+			DrawCenText("Apasa tasta spatiu pentru meniu", GetScreenHeight()/2+80, 30);
 		}
 };

@@ -36,6 +36,8 @@ void AimUpdate(){
 			++score;
 		}
 	}
+	if (gameover && IsKeyPressed(KEY_SPACE))
+		SetScreen(MAIN);
 };
 
 void AimDraw(){
@@ -54,5 +56,6 @@ void AimDraw(){
 	}else{
 		DrawCenText("Felicitari!", GetScreenHeight()/2-40, 50);
 		DrawCenText(TextFormat("Ai obtinut %i puncte", score), GetScreenHeight()/2+12, 50);
+		DrawCenText("Apasa tasta spatiu pentru meniu", GetScreenHeight()/2+80, 30);
 	}
 };

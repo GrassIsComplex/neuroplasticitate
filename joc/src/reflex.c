@@ -76,9 +76,9 @@ void ReflexUpdate(){
 				}
 			}
 		}
-	} else {
-
 	}
+	if (gameover && IsKeyPressed(KEY_SPACE))
+		SetScreen(MAIN);
 };
 
 void ReflexDraw(){
@@ -98,5 +98,6 @@ void ReflexDraw(){
 	} else {
 		DrawCenText("Felicitari!", GetScreenHeight()/2-40, 50);
 		DrawCenText(TextFormat("Ai obtinut %i/%i puncte", score >= 0 ? score : 0, max_score), GetScreenHeight()/2+12, 50);
+		DrawCenText("Apasa tasta spatiu pentru meniu", GetScreenHeight()/2+80, 30);
 	}
 };
